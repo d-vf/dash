@@ -9,8 +9,9 @@ import plotly.express as px
 import os
 import flask
 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server)
+server = Flask(__name__)
+app = dash.Dash(__name__, server = server)
+app.config.requests_pathname_prefix = '' 
 
 
 # get relative data folder
