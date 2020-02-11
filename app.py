@@ -8,9 +8,8 @@ import plotly.express as px
 import os
 import flask
 
-app = dash.Dash(__name__)
-server = app.server # the Flask app
-
+server = flask.flask(__name__)
+app = dash.dash(__name__, server=server)
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
