@@ -6,6 +6,12 @@ import pathlib
 import pandas as pd
 import plotly.express as px
 
+import os
+import flask
+
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, server=server)
+
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
