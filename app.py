@@ -1,4 +1,3 @@
-# Import required libraries
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -6,14 +5,17 @@ import pathlib
 import pandas as pd
 import plotly.express as px
 import flask
+import os
 
-app = dash.Dash(__name__)
+
+########### Initiate the app
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server # the Flask app
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("data").resolve()
-df1 = px.data.gapminder().query("year == 2007")
 
 # Load data
 df = pd.read_csv(DATA_PATH.joinpath("10012776-biblioteca.csv"), sep=';', low_memory=False)
@@ -34,15 +36,12 @@ lares = [['Centro Social e Paroquial de Cabril', 41.714849, -8.034901, 30, 58028
 # Create the pandas DataFrame
 df1 = pd.DataFrame(lares, columns = ['Name', 'lat', 'long', 'pop', 'UTM_Easting', 'UTM_Northing', 'x_ETRS89','y_ETRS89'])
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+    html.H1(children='xpto and unicorn'),
 
     html.Div(children='''
-        Dash: A web application framework for Python.
+        xpto.xpto.
     '''),
 
     dcc.Graph(
@@ -53,7 +52,7 @@ app.layout = html.Div(children=[
                 {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
             ],
             'layout': {
-                'title': 'CHANGE'
+                'title': 'xpto'
             }
         }
     ),
@@ -66,12 +65,16 @@ app.layout = html.Div(children=[
     dcc.Graph(
     id='example-graph4',
     figure = px.scatter_mapbox(df1, lat="lat", lon="long",
-                            color_discrete_sequence=["fuchsia"], zoom=100, height=600,mapbox_style="open-street-map"))
+                            color_discrete_sequence=["fuchsia"], zoom=10, height=400,mapbox_style="open-street-map"))
                             
 ])
 
 
 if __name__ == '__main__':
-         app.run_server(host="0.0.0.0",debug=True)
+    app.run_server(debug=True)
+
+    
+    
+
     
     
