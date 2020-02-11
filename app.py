@@ -5,11 +5,10 @@ import dash_html_components as html
 import pathlib
 import pandas as pd
 import plotly.express as px
-import os
 import flask
 
-server = flask.flask(__name__)
-app = dash.dash(__name__, server=server)
+app = dash.Dash(__name__)
+server = app.server # the Flask app
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
