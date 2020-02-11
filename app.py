@@ -11,7 +11,6 @@ import flask
 
 server = flask(__name__)
 app = dash.dash(__name__, server = server)
-app.config.requests_pathname_prefix = '' 
 
 
 # get relative data folder
